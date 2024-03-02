@@ -50,7 +50,7 @@ jobs:
       - name: Build
         run: |
           echo "Input: ${{ github.event.inputs.target_version }}" > test_arm64.txt
-          echo "Arch: arm64" >> test_arm64.txt
+          docker run --platform linux/arm64 --rm -it ubuntu arch >> test_arm64.txt
       - name: Archive build output
         uses: actions/upload-artifact@v4
         with:
