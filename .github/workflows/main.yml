@@ -79,5 +79,5 @@ jobs:
             - arm64 (aarch64)
             - x86_64 (amd64)
           files: |
-            test_x86-64.txt
+            test_x86_64.txt
             test_arm64.txt
