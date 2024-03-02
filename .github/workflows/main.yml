@@ -52,3 +52,14 @@ jobs:
       - name: Show lists
         run: |
           ls -R
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.target_version }}
+          body: |
+            Test, version ${{ github.event.inputs.target_version }} for
+            - arm64 (aarch64)
+            - x86_64 (amd64)
+          files: |
+            test_x86-64.txt
+            test_arm64.txt
