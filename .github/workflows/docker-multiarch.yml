@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     tags:
-      - v*
+      - '[0-9]*'
 
 jobs:
   build:
@@ -52,5 +52,5 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.<meta_id>.outputs.tags }}
-          labels: ${{ steps.<meta_id>.outputs.labels }}
+          tags: ${{ steps.docker_metadata.outputs.tags }}
+          labels: ${{ steps.docker_metadata.outputs.labels }}
