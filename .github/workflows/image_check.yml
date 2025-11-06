@@ -1,0 +1,28 @@
+name: docker image check
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup docker buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          platforms: linux/amd64
+      - name: Check space before cleanup
+        run: df -h
+      - name: Cleaning
+        run: |
+          docker images
+      - name: Check space after cleanup
+        run: df -h
