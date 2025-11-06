@@ -10,6 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Extend free space by removing unused files
+      # https://github.com/NobuoTsukamoto/my_actions_test/blob/main/.github/workflows/test_contains.yml
       - name: Check space before cleanup
         run: |
           echo "Free space:"
@@ -201,6 +203,8 @@ jobs:
           echo "Free space:"
           df -h
           cat /etc/fstab
+
+      # build and push
       - name: Checkout
         uses: actions/checkout@v4
         with:
